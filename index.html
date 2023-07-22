@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Lucas Nagelsmann</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-	<header>
-		<h1>Willkommen auf Lucas` Website</h1>
-		<nav>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lucas Nagelsmann</title>
+    <link rel="stylesheet" href="CSSFiles/stylesMain.css" />
+    <script src="JavascriptFiles/script.js" defer></script>
+  </head>
+  <body>
+    <header>
+        <nav>
 			<ul>
 				<li><a href="index.html">Startseite</a></li>
 				<li><a href="portfolio.html">Portfolio</a></li>
@@ -17,50 +18,44 @@
 				<li><a href="kontakt.html">Kontakt</a></li>
 			</ul>
 		</nav>
-	</header>
-	<main>
-		<section id="about">
-			<h2>Über mich</h2>
-			<p>Ich bin Lucas, bin 24 Jahre alt und studiere seit 2019 an der Universität Ossnabrück Informatik und Geographie.
-				Ich schreibe seit dem 10. Lebensjahr eigene Programme und beschäftige mich seit 2020 intensiv mit Webentwicklung
-				sowie diversen Bereichen der Computergrafik. Neben dem Studium arbeite ich als Softwareentwickler und bin im Bereich 
-				des automatisierten Testings aktiv. Genug zu mir, jetzt schau bei meinem Portfolio vorbei!
-			</p>
-		</section>
-		<section id="services">
-			<h2>Meine Bereiche</h2>
-			<ul>
-				<li>Softwareentwicklung mit C++, C# oder Java</li>
-				<li>Webentwicklung</li>
-				<li>Computergrafik</li>
-			</ul>
-		</section>
-		<section id="portfolio">
-			<h2>Portfolio</h2>
-			<ul>
-				<li><a href="#">Projekt 1</a></li>
-				<li><a href="#">Projekt 2</a></li>
-				<li><a href="#">Projekt 3</a></li>
-			</ul>
-		</section>
-		<section id="contact">
-			<h2>Kontakt</h2>
-			<form>
-				<label for="name">Name:</label>
-				<input type="text" id="name" name="name"><br>
-
-				<label for="email">E-Mail:</label>
-				<input type="email" id="email" name="email"><br>
-
-				<label for="message">Nachricht:</label>
-				<textarea id="message" name="message"></textarea><br>
-
-				<input type="submit" value="Senden">
-			</form>
-		</section>
-	</main>
-	<footer>
-		<p>&copy; 2023 Lucas Nagelsmann | Alle Rechte vorbehalten</p>
-	</footer>
-</body>
+    </header>
+    <div class="imgs">
+      <img
+        src="imgs/img-1.png"
+        data-img
+        id="img-1"
+        class="top-section-img show"
+      />
+      <img src="imgs/img-2.png" data-img id="img-2" />
+      <img src="imgs/img-3.png" data-img id="img-3" />
+    </div>
+    <section class="top-section full-screen-section">
+      <div class="left">
+        <h1>Build Better Backends</h1>
+        <p>
+          The only platform that gives AI the ability to autonomously build web
+          services.
+        </p>
+      </div>
+      <div class="right"></div>
+    </section>
+    <section class="full-screen-section first-main-section">
+      <h1>Completely Visual</h1>
+      <p>Never touch the command line, from provision to production.</p>
+      <div data-img-to-show="#img-1"></div>
+    </section>
+    <section class="full-screen-section">
+      <h1>Full Stack</h1>
+      <p>
+        Never manage infrastructure again. One click gets you: a database, APIs,
+        deployments, hosting, etc.
+      </p>
+      <div data-img-to-show="#img-2"></div>
+    </section>
+    <section class="full-screen-section">
+      <h1>Launch Faster</h1>
+      <p>Logical can get systems to market in minutes instead of weeks.</p>
+      <div data-img-to-show="#img-3"></div>
+    </section>
+  </body>
 </html>
