@@ -1,61 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lucas Nagelsmann</title>
-    <link rel="stylesheet" href="CSSFiles/stylesMain.css" />
-    <script src="JavascriptFiles/script.js" defer></script>
-  </head>
-  <body>
-    <header>
-        <nav>
-			<ul>
-				<li><a href="index.html">Startseite</a></li>
-				<li><a href="portfolio.html">Portfolio</a></li>
-				<li><a href="übermich.html">Über uns</a></li>
-				<li><a href="kontakt.html">Kontakt</a></li>
-			</ul>
-		</nav>
-    </header>
-    <div class="imgs">
-      <img
-        src="imgs/img-1.png"
-        data-img
-        id="img-1"
-        class="top-section-img show"
-      />
-      <img src="imgs/img-2.png" data-img id="img-2" />
-      <img src="imgs/img-3.png" data-img id="img-3" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Project Showcase</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid bg-cover" style="background-image: url('background.jpg');">
+        <div class="container">
+            <h1 class="display-4">Welcome to Project Showcase</h1>
+            <p class="lead">Explore our latest projects and get inspired!</p>
+        </div>
     </div>
-    <section class="top-section full-screen-section">
-      <div class="left">
-        <h1>Build Better Backends</h1>
-        <p>
-          The only platform that gives AI the ability to autonomously build web
-          services.
-        </p>
-      </div>
-      <div class="right"></div>
-    </section>
-    <section class="full-screen-section first-main-section">
-      <h1>Completely Visual</h1>
-      <p>Never touch the command line, from provision to production.</p>
-      <div data-img-to-show="#img-1"></div>
-    </section>
-    <section class="full-screen-section">
-      <h1>Full Stack</h1>
-      <p>
-        Never manage infrastructure again. One click gets you: a database, APIs,
-        deployments, hosting, etc.
-      </p>
-      <div data-img-to-show="#img-2"></div>
-    </section>
-    <section class="full-screen-section">
-      <h1>Launch Faster</h1>
-      <p>Logical can get systems to market in minutes instead of weeks.</p>
-      <div data-img-to-show="#img-3"></div>
-    </section>
-  </body>
-</html>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="project1.jpg" alt="Project 1" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 1: Website Redesign</h5>
+                        <p class="card-text">A modern website redesign for a fictional company.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="project2.jpg" alt="Project 2" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 2: Mobile App Development</h5>
+                        <p class="card-text">A mobile app for tracking personal finances.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="project3.jpg" alt="Project 3" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Project 3: E-commerce Platform</h5>
+                        <p class="card-text">A custom e-commerce platform for a fashion brand.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+            </div>
+            <div class="col-md-6">
+                <h2>Get in Touch</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+                <a href="#" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 Project Showcase</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com

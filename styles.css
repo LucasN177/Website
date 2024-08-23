@@ -101,3 +101,12 @@ footer {
     padding: 10px;
     text-align: center;
 }
+
+.main-content {
+    padding-top: 60px; /* adjust to match the height of your navbar */
+    padding-bottom: 120px; /* add extra padding to ensure cards are fully visible */
+}
+
+.card:last-child {
+    margin-bottom: 60px; /* add margin to ensure last card is fully visible */
+}
