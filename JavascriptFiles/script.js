@@ -31,3 +31,36 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll("[data-img-to-show]").forEach(section => {
   observer.observe(section)
 })
+
+const carousel = document.querySelector('.card-carousel');
+const cards = document.querySelectorAll('.card');
+const prevButton = document.querySelector('.carousel-prev');
+const nextButton = document.querySelector('.carousel-next');
+
+let currentCard = 0;
+let isClickableLeft = false;
+let isClickableRight = true;
+
+prevButton.addEventListener('click', () => {
+  if (isClickableLeft) {
+    currentCard -= 1;
+    isClickableLeft = false;
+    isClickableRight = true;
+    if (currentCard < 0) {
+      currentCard = cards.length - 1;
+    }
+    carousel.style.transform = `translateX(${currentCard * -100}%)`;
+}
+});
+
+nextButton.addEventListener('click', () => {
+  if (isClickableRight) {
+    currentCard += 1;
+    isClickableLeft = true;
+    isClickableRight = false;
+    if (currentCard >= cards.length) {
+      currentCard = 0;
+    }
+    carousel.style.transform = `translateX(${currentCard * -100}%)`;
+}
+});

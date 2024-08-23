@@ -110,3 +110,53 @@ footer {
 .card:last-child {
     margin-bottom: 60px; /* add margin to ensure last card is fully visible */
 }
+
+.card-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .card-carousel {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: transform 0.5s ease;
+  }
+  
+  .card {
+    width: calc(100% / 3);
+    margin: 10px;
+    flex-shrink: 0;
+  }
+  
+  .carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .carousel-prev, .carousel-next {
+    background-color: #fff; /* Hintergrundfarbe */
+    border: 1px solid #ddd; /* Rand */
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute; /* Positionierung */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .carousel-prev {
+    left: 0; /* Positionierung links */
+  }
+  
+  .carousel-next {
+    right: 0; /* Positionierung rechts */
+  }
+  
+  .carousel-prev:hover, .carousel-next:hover {
+    background-color: #ccc;
+  }
