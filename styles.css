@@ -124,7 +124,7 @@ footer {
   }
   
   .card {
-    width: calc(100% / 3);
+    width: calc(95% / 3);
     margin: 10px;
     flex-shrink: 0;
   }
@@ -139,7 +139,7 @@ footer {
   }
   
   .carousel-prev, .carousel-next {
-    background-color: #fff; /* Hintergrundfarbe */
+    background-color: #000000; /* Hintergrundfarbe */
     border: 1px solid #ddd; /* Rand */
     padding: 10px;
     font-size: 24px;
