@@ -435,16 +435,3 @@ window.addEventListener('resize', debounce(() => {
         }
     }
 }, 250));
-
-// ===================================
-// CONSOLE MESSAGE
-// ===================================
-
-console.log(
-    '%c👋 Willkommen auf meiner Portfolio-Website!',
-    'font-size: 20px; font-weight: bold; color: #007aff;'
-);
-console.log(
-    '%c🚀 Entwickelt mit HTML, CSS und Vanilla JavaScript',
-    'font-size: 14px; color: #6e6e73;'
-);
