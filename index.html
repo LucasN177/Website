@@ -1,303 +1,579 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio von Lucas Nagelsmann - Software Engineer & .NET Entwickler mit über 3 Jahren Erfahrung">
-    <meta name="keywords" content="Software Engineer, .NET, C#, Blazor, ASP.NET Core, Web Development">
+    <title>Lucas Nagelsmann — Software Engineer &amp; IT Consultant</title>
+    <meta name="description" content="Lucas Nagelsmann is a software engineer and IT consultant specializing in .NET, C#, ASP.NET Core and Blazor — building reliable, scalable and maintainable applications.">
     <meta name="author" content="Lucas Nagelsmann">
-    <title>Lucas Nagelsmann - Software Engineer & IT Consultant</title>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="canonical" href="https://www.lucas-nagelsmann.de/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.lucas-nagelsmann.de/">
+    <meta property="og:title" content="Lucas Nagelsmann — Software Engineer & IT Consultant">
+    <meta property="og:description" content="Reliable .NET software for modern businesses. Web and desktop applications with C#, ASP.NET Core and Blazor.">
+    <meta property="og:image" content="https://www.lucas-nagelsmann.de/resources/img/hero-bg.png">
+
     <link rel="icon" type="image/png" sizes="32x32" href="resources/icons/FaveIcon32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="resources/icons/FaveIcon16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="resources/icons/FaveIcon180.png">
-```
-    <link rel="stylesheet" href="style.css">
-</head>
-<body data-theme="light">
-    <div class="page-wrapper">
-        <!-- Navigation -->
-        <nav class="navbar" role="navigation" aria-label="Hauptnavigation">
-            <div class="nav-container">
-                <div class="logo" aria-label="Logo">www.lucas-nagelsmann.de</div>
-                
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                </button>
 
-                <!-- Navigation Links -->
-                <ul class="nav-links" role="list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About me</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#portfolio">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><button class="theme-toggle" aria-label="Theme wechseln">🌙</button></li>
+    <!-- Apply theme before first paint (prevents flashing) -->
+    <script>
+        (() => {
+            const root = document.documentElement;
+            root.classList.add('js');
+            let theme = null;
+            try { theme = localStorage.getItem('theme'); } catch {}
+            if (theme !== 'light' && theme !== 'dark') {
+                theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            root.dataset.theme = theme;
+        })();
+    </script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Icon sprite -->
+    <svg class="sprite" aria-hidden="true" focusable="false">
+        <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+        <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+        <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></symbol>
+        <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></symbol>
+        <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></symbol>
+        <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+        <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></symbol>
+        <symbol id="i-branch" viewBox="0 0 24 24"><path d="M6 3v12"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+        <symbol id="i-kanban" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7v7"/><path d="M12 7v4"/><path d="M16 7v9"/></symbol>
+        <symbol id="i-terminal" viewBox="0 0 24 24"><path d="m4 17 6-6-6-6"/><path d="M12 19h8"/></symbol>
+        <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    </svg>
+
+    <!-- ============ HEADER ============ -->
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <a class="brand" href="#top" aria-label="Lucas Nagelsmann — back to top">
+                <span class="brand-mark" aria-hidden="true">LN</span>
+                <span class="brand-name">Lucas Nagelsmann</span>
+            </a>
+
+            <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+                <ul class="nav-list" role="list">
+                    <li style="--i: 0"><a class="nav-link" href="#about">About</a></li>
+                    <li style="--i: 1"><a class="nav-link" href="#expertise">Expertise</a></li>
+                    <li style="--i: 2"><a class="nav-link" href="#approach">Approach</a></li>
+                    <li style="--i: 3"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li style="--i: 4"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <a class="btn btn-primary btn-sm nav-cta" href="#contact">
+                    Let's talk
+                    <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                </a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark theme">
+                    <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+                    <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+                </button>
+                <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav">
+                    <span class="menu-bars" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+        <div class="scroll-progress" aria-hidden="true"></div>
+    </header>
+
+    <main id="main">
+        <!-- ============ HERO ============ -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-grid"></div>
+                <div class="glow glow-1"></div>
+                <div class="glow glow-2"></div>
+            </div>
+
+            <div class="container hero-inner">
+                <div class="hero-copy">
+                    <p class="eyebrow intro" style="--d: 0">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Software Engineer · IT Consultant
+                    </p>
+                    <h1 class="hero-title intro" id="hero-title" style="--d: 1">
+                        Reliable .NET software for <span class="text-gradient">modern businesses.</span>
+                    </h1>
+                    <p class="hero-lead intro" style="--d: 2">
+                        I help teams design, build and scale web and desktop applications with C#, ASP.NET&nbsp;Core and Blazor — with clean architecture, tested code and a clear focus on long-term maintainability.
+                    </p>
+                    <div class="hero-actions intro" style="--d: 3">
+                        <a class="btn btn-primary btn-lg" href="#contact">
+                            Start a project
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                        </a>
+                        <a class="btn btn-secondary btn-lg" href="#projects">View projects</a>
+                    </div>
+                    <dl class="hero-stats intro" style="--d: 4">
+                        <div class="stat">
+                            <dt>Years of professional experience</dt>
+                            <dd><span data-count="3">3</span>+</dd>
+                        </div>
+                        <div class="stat">
+                            <dt>Core areas of expertise</dt>
+                            <dd><span data-count="9">9</span></dd>
+                        </div>
+                        <div class="stat">
+                            <dt>Computer Science degree</dt>
+                            <dd>B.A.</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <div class="hero-visual intro intro-scale" style="--d: 2">
+                    <div class="portrait-card">
+                        <img src="resources/img/hero-bg.png"
+                             alt="Portrait of Lucas Nagelsmann"
+                             width="430" height="460"
+                             fetchpriority="high"
+                             decoding="async">
+                    </div>
+
+                    <div class="float-card badge-card">
+                        <span class="badge-icon" aria-hidden="true">
+                            <svg class="icon"><use href="#i-shield"/></svg>
+                        </span>
+                        <span class="badge-text">
+                            <strong>Clean Architecture</strong>
+                            <span>Tested · Scalable · Maintainable</span>
+                        </span>
+                    </div>
+
+                    <div class="float-card code-card" aria-hidden="true">
+                        <div class="code-head">
+                            <span class="code-dot"></span><span class="code-dot"></span><span class="code-dot"></span>
+                            <span class="code-file">Solution.cs</span>
+                        </div>
+<pre><code><span class="tok-k">public sealed class</span> <span class="tok-t">Solution</span>
+{
+    <span class="tok-k">public bool</span> IsTested =&gt; <span class="tok-b">true</span>;
+    <span class="tok-k">public bool</span> IsScalable =&gt; <span class="tok-b">true</span>;
+    <span class="tok-k">public bool</span> IsMaintainable =&gt; <span class="tok-b">true</span>;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TECH STACK ============ -->
+        <section class="tech" aria-labelledby="tech-title">
+            <div class="container">
+                <h2 class="tech-title" id="tech-title">Technologies &amp; tools I work with</h2>
+            </div>
+            <div class="marquee">
+                <ul class="marquee-track" role="list">
+                    <li class="tech-item">C#</li>
+                    <li class="tech-item">.NET</li>
+                    <li class="tech-item">ASP.NET Core</li>
+                    <li class="tech-item">Blazor</li>
+                    <li class="tech-item">WPF</li>
+                    <li class="tech-item">Entity Framework Core</li>
+                    <li class="tech-item">SignalR</li>
+                    <li class="tech-item">gRPC</li>
+                    <li class="tech-item">REST APIs</li>
+                    <li class="tech-item">Azure DevOps</li>
+                    <li class="tech-item">SQL Server</li>
+                    <li class="tech-item">PostgreSQL</li>
+                    <li class="tech-item">xUnit</li>
+                    <li class="tech-item">Playwright</li>
+                    <li class="tech-item">Git</li>
+                </ul>
+                <ul class="marquee-track" role="list" aria-hidden="true">
+                    <li class="tech-item">C#</li>
+                    <li class="tech-item">.NET</li>
+                    <li class="tech-item">ASP.NET Core</li>
+                    <li class="tech-item">Blazor</li>
+                    <li class="tech-item">WPF</li>
+                    <li class="tech-item">Entity Framework Core</li>
+                    <li class="tech-item">SignalR</li>
+                    <li class="tech-item">gRPC</li>
+                    <li class="tech-item">REST APIs</li>
+                    <li class="tech-item">Azure DevOps</li>
+                    <li class="tech-item">SQL Server</li>
+                    <li class="tech-item">PostgreSQL</li>
+                    <li class="tech-item">xUnit</li>
+                    <li class="tech-item">Playwright</li>
+                    <li class="tech-item">Git</li>
                 </ul>
             </div>
-        </nav>
+        </section>
 
-        <!-- Main Content -->
-        <main>
-            <!-- Hero Section -->
-            <section id="home" class="hero">
-                <div class="hero-bg" aria-hidden="true"></div>
-                <div class="hero-content">
-                    <h1>Lucas Nagelsmann</h1>
-                    <p>Software Engineer&ensp;|&ensp;IT Consultant&ensp;|&ensp;B.A. Computer science</p>
-                    <a href="#portfolio" class="cta-button">My projects</a>
+        <!-- ============ ABOUT ============ -->
+        <section class="section" id="about" aria-labelledby="about-title">
+            <div class="container about-grid">
+                <div class="about-copy reveal">
+                    <p class="section-label">About</p>
+                    <h2 class="section-title" id="about-title">Engineering software that lasts.</h2>
+                    <p>
+                        I'm Lucas — a software engineer and IT consultant with a B.A. in Computer Science and more than three years of professional experience in the .NET ecosystem. I build modern web and desktop applications with C#, ASP.NET Core, Blazor and WPF, backed by Entity Framework Core, SignalR and Azure DevOps.
+                    </p>
+                    <p>
+                        My goal is software that works well today and stays adaptable tomorrow. Clean architecture, testable code and a thoughtful user experience aren't extras for me — they're the foundation of every project.
+                    </p>
+                    <a class="link-arrow" href="#expertise">
+                        Explore my expertise
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                    </a>
                 </div>
-            </section>
 
-            <!-- About Section -->
-            <section id="about" class="section">
-                <h2 class="section-title scroll-fade">About me</h2>
-                <div class="about-content">
-                    <div class="about-text scroll-slide-left">
-                        <p>Hello! I’m a passionate .NET developer with over three years of professional experience building modern web and desktop applications using C#, ASP.NET Core, Blazor, and WPF. I rely on tools such as Entity Framework Core, SignalR, and Azure DevOps to create efficient, maintainable and scalable solutions.</p>
-                        <p>I value clean architectures, testable code, and elegant approaches to solving complex challenges — always with a strong focus on performance, usability, and long-term scalability.
-Beyond that, I continually explore new technologies within the .NET ecosystem, refine my development practices, and enjoy turning ideas into robust and user-friendly software products. My goal is to build applications that not only work well today but remain adaptable for the future.</p>
-                    </div>
-                    <div class="about-image scroll-slide-right">
-                        <div class="portrait-wrap">
-                            <img src="resources/img/hero-bg.png" 
-                                 alt="Profilbild von Lucas Nagelsmann" 
-                                 class="portrait" 
-                                 id="portrait"
-                                 loading="lazy">
-                        </div>
-                    </div>
-                </div>
-            </section>
+                <ul class="principles" role="list">
+                    <li class="principle reveal" style="--i: 0">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-layers"/></svg></span>
+                        <h3>Clean architecture</h3>
+                        <p>Clear boundaries and Domain-Driven Design keep complex systems understandable and easy to change.</p>
+                    </li>
+                    <li class="principle reveal" style="--i: 1">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-shield"/></svg></span>
+                        <h3>Quality by default</h3>
+                        <p>Unit, integration and end-to-end tests make every release predictable.</p>
+                    </li>
+                    <li class="principle reveal" style="--i: 2">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-zap"/></svg></span>
+                        <h3>Performance-minded</h3>
+                        <p>Caching, asynchronous patterns and efficient data access from day one.</p>
+                    </li>
+                    <li class="principle reveal" style="--i: 3">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-book"/></svg></span>
+                        <h3>Continuous learning</h3>
+                        <p>Always exploring what's new in .NET to bring the right tools to every project.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-            <!-- Skills Section -->
-            <section id="skills" class="section">
-                <h2 class="section-title scroll-fade">Skills</h2>
-                <div class="skills-grid">
-                    <article class="skill-card scroll-fade">
+        <!-- ============ EXPERTISE ============ -->
+        <section class="section section-alt" id="expertise" aria-labelledby="expertise-title">
+            <div class="container">
+                <header class="section-head center reveal">
+                    <p class="section-label">Expertise</p>
+                    <h2 class="section-title" id="expertise-title">End-to-end expertise across the .NET stack</h2>
+                    <p class="section-intro">From architecture and backend services to user interfaces, data and delivery — everything needed to take an application from idea to production.</p>
+                </header>
+
+                <div class="cards-grid">
+                    <article class="card reveal" style="--i: 0">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-code"/></svg></span>
                         <h3>.NET Web Development</h3>
-                            <p>
-                                Building modern web applications with ASP.NET Core, Blazor, and MVC. 
-                                Strong expertise in C#, Razor Pages, and Entity Framework Core.
-                            </p>
+                        <p>Modern web applications with ASP.NET Core, Blazor and MVC — built on C#, Razor Pages and Entity Framework Core.</p>
                     </article>
-
-                    <article class="skill-card scroll-fade">
+                    <article class="card reveal" style="--i: 1">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-layers"/></svg></span>
                         <h3>Full-Stack Architecture</h3>
-                            <p>
-                                Seamless integration of backend and frontend using REST APIs, SignalR, and gRPC. 
-                                Experienced in applying Clean Architecture principles and Domain-Driven Design.
-                            </p>
+                        <p>Seamless backend and frontend integration via REST, SignalR and gRPC, guided by Clean Architecture and DDD.</p>
                     </article>
-
-                    <article class="skill-card scroll-fade">
+                    <article class="card reveal" style="--i: 2">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-layout"/></svg></span>
                         <h3>UI/UX with Blazor</h3>
-                        <p>
-                            Component-based UI development using Blazor. 
-                            Creation of reusable UI elements and responsive layouts with Bootstrap and CSS Grid.
-                        </p>
+                        <p>Reusable, component-based interfaces and responsive layouts with Bootstrap and CSS Grid.</p>
                     </article>
+                    <article class="card reveal" style="--i: 0">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-zap"/></svg></span>
+                        <h3>Performance &amp; Scalability</h3>
+                        <p>Caching, asynchronous programming and efficient database access — supported by middleware, logging and monitoring.</p>
+                    </article>
+                    <article class="card reveal" style="--i: 1">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-shield"/></svg></span>
+                        <h3>Software Testing</h3>
+                        <p>xUnit and MSTest, mocking with NSubstitute, coverage analysis, TDD and end-to-end tests with Playwright or Selenium.</p>
+                    </article>
+                    <article class="card reveal" style="--i: 2">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-database"/></svg></span>
+                        <h3>Database Development</h3>
+                        <p>SQL Server, PostgreSQL and MySQL with Entity Framework Core, LINQ and structured migration strategies.</p>
+                    </article>
+                    <article class="card reveal" style="--i: 0">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-branch"/></svg></span>
+                        <h3>Git &amp; GitHub</h3>
+                        <p>Collaborative workflows, pull-request based code reviews and branching strategies such as Git Flow.</p>
+                    </article>
+                    <article class="card reveal" style="--i: 1">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-kanban"/></svg></span>
+                        <h3>Agile Delivery</h3>
+                        <p>Scrum and Kanban with Azure Boards and Jira, plus clear documentation in Markdown and wikis.</p>
+                    </article>
+                    <article class="card reveal" style="--i: 2">
+                        <span class="feature-icon" aria-hidden="true"><svg class="icon"><use href="#i-terminal"/></svg></span>
+                        <h3>Developer Tooling</h3>
+                        <p>Productive development with Visual Studio, Rider and ReSharper, including debugging, profiling and monitoring.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <article class="skill-card scroll-fade">
-        <h3>Performance & Scalability</h3>
-        <p>
-            Optimization of .NET applications through caching, asynchronous programming, 
-            and efficient database access. Utilizing middleware, logging, and monitoring solutions.
-        </p>
-    </article>
+        <!-- ============ APPROACH ============ -->
+        <section class="section" id="approach" aria-labelledby="approach-title">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="section-label">Approach</p>
+                    <h2 class="section-title" id="approach-title">A clear process from first idea to production</h2>
+                    <p class="section-intro">Transparent steps, short feedback loops and quality built in at every stage.</p>
+                </header>
 
-    <article class="skill-card scroll-fade">
-        <h3>Git & GitHub</h3>
-        <p>
-            Version control with Git, collaborative workflows with GitHub, 
-            code reviews via pull requests, and branching strategies such as Git Flow.
-        </p>
-    </article>
+                <ol class="steps" role="list">
+                    <li class="step reveal" style="--i: 0">
+                        <span class="step-number">01</span>
+                        <svg class="icon step-icon" aria-hidden="true"><use href="#i-search"/></svg>
+                        <h3>Discover</h3>
+                        <p>Understand goals, users and constraints — and define what success looks like.</p>
+                    </li>
+                    <li class="step reveal" style="--i: 1">
+                        <span class="step-number">02</span>
+                        <svg class="icon step-icon" aria-hidden="true"><use href="#i-layers"/></svg>
+                        <h3>Architect</h3>
+                        <p>Design a clean, scalable solution and choose the right technologies for the job.</p>
+                    </li>
+                    <li class="step reveal" style="--i: 2">
+                        <span class="step-number">03</span>
+                        <svg class="icon step-icon" aria-hidden="true"><use href="#i-code"/></svg>
+                        <h3>Build &amp; test</h3>
+                        <p>Deliver in short iterations with automated tests and code reviews on every change.</p>
+                    </li>
+                    <li class="step reveal" style="--i: 3">
+                        <span class="step-number">04</span>
+                        <svg class="icon step-icon" aria-hidden="true"><use href="#i-rocket"/></svg>
+                        <h3>Ship &amp; evolve</h3>
+                        <p>Deploy through CI/CD pipelines, monitor in production and keep improving.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
 
-    <article class="skill-card scroll-fade">
-        <h3>Software Testing</h3>
-        <p>
-            Unit testing with xUnit and MSTest, mocking with NSubstitute, 
-            code coverage analysis, and TDD practices. 
-            End-to-end testing using Playwright or Selenium.
-        </p>
-    </article>
+        <!-- ============ PROJECTS ============ -->
+        <section class="section section-alt" id="projects" aria-labelledby="projects-title">
+            <div class="container">
+                <header class="section-head center reveal">
+                    <p class="section-label">Projects</p>
+                    <h2 class="section-title" id="projects-title">Selected projects</h2>
+                    <p class="section-intro">A selection of applications I've designed and built — from real-time platforms to data-driven tools.</p>
+                </header>
 
-    <article class="skill-card scroll-fade">
-        <h3>Database Development</h3>
-        <p>
-            Experience with SQL Server, PostgreSQL, and MySQL. 
-            Data access using Entity Framework Core, LINQ, and structured migration strategies.
-        </p>
-    </article>
-
-    <article class="skill-card scroll-fade">
-        <h3>Agile Tools & Workflows</h3>
-        <p>
-            Agile development with Scrum and Kanban, task management using Azure Boards and Jira, 
-            and documentation using Markdown and wiki systems.
-        </p>
-    </article>
-
-    <article class="skill-card scroll-fade">
-        <h3>Visual Studio, Rider & Extensions</h3>
-        <p>
-            Efficient development using Visual Studio, Rider, and ReSharper, 
-            along with powerful debugging, profiling, and monitoring tools.
-        </p>
-    </article>
-</div>
-
-            </section>
-
-            <!-- Portfolio Section -->
-            <section id="portfolio" class="section">
-                <h2 class="section-title scroll-fade">Projects</h2>
-                <div class="portfolio-grid">
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">Social Network</div>
-                        <div class="project-content">
+                <!-- TODO: replace href="#" with the real project URLs -->
+                <div class="cards-grid">
+                    <article class="project-card reveal" style="--i: 0; --hue: 222">
+                        <div class="project-visual" aria-hidden="true">
+                            <span class="project-glyph">LN</span>
+                            <span class="project-visual-label">Social Network</span>
+                        </div>
+                        <div class="project-body">
                             <h3>LN Social</h3>
-                            <p class="simple-desc">A modern social network like application based on Blazor WebAssembly with Supabase as Backend. Important features are authentication and real time data passing.</p>
-                            <a href="#" 
-                               class="project-link" 
-                               target="_blank" 
-                               rel="noopener noreferrer">
-                               View project →
+                            <p>A modern social networking application built with Blazor WebAssembly and Supabase, featuring secure authentication and real-time data.</p>
+                            <ul class="tags" role="list"><li>Blazor WASM</li><li>Supabase</li><li>Real-time</li></ul>
+                            <a class="link-arrow" href="#" target="_blank" rel="noopener noreferrer">
+                                View project <span class="visually-hidden">LN Social</span>
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
                             </a>
                         </div>
                     </article>
 
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">MonExA</div>
-                        <div class="project-content">
-                            <h3>Money Expenses Anlaysis</h3>
-                            <p class="simple-desc">A modern Blazor application to track and analyze expenses. Some interesting features are multi accounts and projects, database integration with supabase.</p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
+                    <article class="project-card reveal" style="--i: 1; --hue: 162">
+                        <div class="project-visual" aria-hidden="true">
+                            <span class="project-glyph">MonExA</span>
+                            <span class="project-visual-label">Finance</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>Money Expense Analysis</h3>
+                            <p>Track and analyze expenses across multiple accounts and projects — a Blazor application with Supabase database integration.</p>
+                            <ul class="tags" role="list"><li>Blazor</li><li>Supabase</li><li>Analytics</li></ul>
+                            <a class="link-arrow" href="#" target="_blank" rel="noopener noreferrer">
+                                View project <span class="visually-hidden">Money Expense Analysis</span>
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                            </a>
                         </div>
                     </article>
 
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">FootballTracker</div>
-                        <div class="project-content">
+                    <article class="project-card reveal" style="--i: 2; --hue: 128">
+                        <div class="project-visual" aria-hidden="true">
+                            <span class="project-glyph">FT</span>
+                            <span class="project-visual-label">Sports Data</span>
+                        </div>
+                        <div class="project-body">
                             <h3>Football Tracker</h3>
-                            <p class="simple-desc">A modern tracker and data visualizer for football data and real time form checks. Multi comparison and analysis with various apis. Multi leagues work in progress.</p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
+                            <p>Tracks and visualizes football data with real-time form checks and multi-source comparisons. Support for more leagues is in progress.</p>
+                            <ul class="tags" role="list"><li>Data visualization</li><li>External APIs</li><li>Real-time</li></ul>
+                            <a class="link-arrow" href="#" target="_blank" rel="noopener noreferrer">
+                                View project <span class="visually-hidden">Football Tracker</span>
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                            </a>
                         </div>
                     </article>
 
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">Dart Counter</div>
-                        <div class="project-content">
+                    <article class="project-card reveal" style="--i: 0; --hue: 12">
+                        <div class="project-visual" aria-hidden="true">
+                            <span class="project-glyph">180</span>
+                            <span class="project-visual-label">Dart Counter</span>
+                        </div>
+                        <div class="project-body">
                             <h3>Dart Application</h3>
-                            <p class="simple-desc">A modern dart counter with different gamemodes and difficulties. Analyze your Training and track your Progress. Game on!</p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
+                            <p>A dart scorer with multiple game modes and difficulty levels — analyze your training and track your progress. Game on!</p>
+                            <ul class="tags" role="list"><li>Web app</li><li>Game modes</li><li>Statistics</li></ul>
+                            <a class="link-arrow" href="#" target="_blank" rel="noopener noreferrer">
+                                View project <span class="visually-hidden">Dart Application</span>
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                            </a>
                         </div>
                     </article>
 
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">Hearts</div>
-                        <div class="project-content">
+                    <article class="project-card reveal" style="--i: 1; --hue: 330">
+                        <div class="project-visual" aria-hidden="true">
+                            <span class="project-glyph">♥</span>
+                            <span class="project-visual-label">Card Game</span>
+                        </div>
+                        <div class="project-body">
                             <h3>Hearts Game App</h3>
-                            <p class="simple-desc">A simple web application for hearts. Play against cpu players in four different difficulties, analyze your own game and track your points. </p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
+                            <p>The classic card game in the browser: play against CPU opponents on four difficulty levels, review your games and track your score.</p>
+                            <ul class="tags" role="list"><li>Web app</li><li>CPU opponents</li><li>Statistics</li></ul>
+                            <a class="link-arrow" href="#" target="_blank" rel="noopener noreferrer">
+                                View project <span class="visually-hidden">Hearts Game App</span>
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                            </a>
                         </div>
                     </article>
 
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">Syncro</div>
-                        <div class="project-content">
+                    <article class="project-card reveal" style="--i: 2; --hue: 262">
+                        <div class="project-visual" aria-hidden="true">
+                            <span class="project-glyph">Syncro</span>
+                            <span class="project-visual-label">Project Management</span>
+                        </div>
+                        <div class="project-body">
                             <h3>Project Management App</h3>
-                            <p class="simple-desc">A simple web application for managing your whole project with just one tool. Work with mates, schedule tasks, track your progress! </p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
+                            <p>One tool for your entire project: collaborate with your team, schedule tasks and keep track of progress.</p>
+                            <ul class="tags" role="list"><li>Collaboration</li><li>Planning</li><li>Tracking</li></ul>
+                            <a class="link-arrow" href="#" target="_blank" rel="noopener noreferrer">
+                                View project <span class="visually-hidden">Project Management App</span>
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                            </a>
                         </div>
                     </article>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Contact Section -->
-            <section id="contact" class="section">
-                <h2 class="section-title scroll-fade">Contact</h2>
-                <div class="contact-content">
-                    <p class="scroll-fade">Planning a new project? Let’s talk about how we can make it happen.</p>
-                    <form class="contact-form scroll-fade" novalidate>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" 
-                                   id="name" 
-                                   name="name" 
-                                   required 
-                                   autocomplete="name"
-                                   placeholder="Your name">
+        <!-- ============ CONTACT ============ -->
+        <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="contact-card reveal">
+                    <div class="contact-copy">
+                        <p class="section-label">Contact</p>
+                        <h2 class="section-title" id="contact-title">Let's build something reliable together.</h2>
+                        <p class="contact-lead">Planning a new project, need support with an existing .NET application or want a second opinion on your architecture? Tell me about it — I'll get back to you personally.</p>
+
+                        <ul class="contact-points" role="list">
+                            <li><span class="check" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>New applications &amp; MVPs</li>
+                            <li><span class="check" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>Modernizing existing .NET solutions</li>
+                            <li><span class="check" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>Architecture &amp; code reviews</li>
+                        </ul>
+
+                        <div class="contact-links">
+                            <a class="btn btn-ghost" href="https://github.com/LucasN177" target="_blank" rel="noopener noreferrer">
+                                <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+                                GitHub
+                            </a>
+                            <!-- TODO: add LinkedIn profile URL -->
+                            <a class="btn btn-ghost" href="#" target="_blank" rel="noopener noreferrer">
+                                <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+                                LinkedIn
+                            </a>
                         </div>
-                        <div class="form-group">
-                            <label for="email">E-Mail</label>
-                            <input type="email" 
-                                   id="email" 
-                                   name="email" 
-                                   required 
-                                   autocomplete="email"
-                                   placeholder="your.email@example.com">
+                    </div>
+
+                    <!-- TODO: connect to a real form backend (submission is currently simulated in script.js) -->
+                    <form class="contact-form" novalidate>
+                        <div class="form-row">
+                            <div class="field">
+                                <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+                                <input type="text" id="name" name="name" required autocomplete="name" placeholder="Jane Doe" aria-describedby="name-error">
+                                <p class="field-error" id="name-error"></p>
+                            </div>
+                            <div class="field">
+                                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                                <input type="email" id="email" name="email" required autocomplete="email" placeholder="jane@company.com" aria-describedby="email-error">
+                                <p class="field-error" id="email-error"></p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" 
-                                      name="message" 
-                                      rows="5" 
-                                      required
-                                      placeholder="Your message to me ..."></textarea>
+                        <div class="field">
+                            <label for="company">Company <span class="optional">(optional)</span></label>
+                            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Company name">
                         </div>
-                        <button type="submit" class="submit-btn">Send message</button>
+                        <div class="field">
+                            <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project, goals and timeline…" aria-describedby="message-error"></textarea>
+                            <p class="field-error" id="message-error"></p>
+                        </div>
+                        <div class="form-footer">
+                            <p class="form-note">Fields marked <span class="req">*</span> are required.</p>
+                            <button type="submit" class="btn btn-primary btn-lg submit-btn">
+                                <span class="btn-label">Send message</span>
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+                            </button>
+                        </div>
+                        <p class="form-status" role="status" aria-live="polite"></p>
                     </form>
                 </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="social-links">
-                <a href="#" 
-                   class="social-link" 
-                   aria-label="Facebook"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-facebook.svg" alt="F">
-                </a>
-                <a href="#" 
-                   class="social-link" 
-                   aria-label="Instagram"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-instagram.svg" alt="I">
-                </a>
-                <a href="#" 
-                   class="social-link" 
-                   aria-label="LinkedIn"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-linkedin.svg" alt="L">
-                </a>
-                <a href="#" 
-                   class="social-link" 
-                   aria-label="X (Twitter)"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-x.svg" alt="X">
-                </a>
-                <a href="https://github.com/LucasN177" 
-                   class="social-link" 
-                   aria-label="GitHub"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-github.svg" alt="G">
-                </a>
             </div>
-            <p>&copy; 2026 Lucas Nagelsmann. All rights reserved.</p>
-        </footer>
-    </div>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a class="brand" href="#top">
+                    <span class="brand-mark" aria-hidden="true">LN</span>
+                    <span class="brand-name">Lucas Nagelsmann</span>
+                </a>
+                <p>Software engineering &amp; IT consulting with a focus on .NET, clean architecture and maintainable code.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <p class="footer-heading">Navigation</p>
+                <ul role="list">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#expertise">Expertise</a></li>
+                    <li><a href="#approach">Approach</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-social">
+                <p class="footer-heading">Connect</p>
+                <div class="social-row">
+                    <a class="icon-btn" href="https://github.com/LucasN177" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+                    </a>
+                    <a class="icon-btn" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; <span data-year>2026</span> Lucas Nagelsmann. All rights reserved.</p>
+            <a href="#top" class="back-to-top">Back to top ↑</a>
+        </div>
+    </footer>
 </body>
 </html>
