@@ -7,297 +7,263 @@
     <meta name="keywords" content="Software Engineer, .NET, C#, Blazor, ASP.NET Core, Web Development">
     <meta name="author" content="Lucas Nagelsmann">
     <title>Lucas Nagelsmann - Software Engineer & IT Consultant</title>
+
     <link rel="icon" type="image/png" sizes="32x32" href="resources/icons/FaveIcon32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="resources/icons/FaveIcon16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="resources/icons/FaveIcon180.png">
-```
+
+    <!-- Apply saved / system theme before first paint to avoid a flash of the wrong theme -->
+    <script>
+        (() => {
+            let theme = null;
+            try { theme = localStorage.getItem('theme'); } catch {}
+            if (!theme) theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = theme;
+        })();
+    </script>
+
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-<body data-theme="light">
-    <div class="page-wrapper">
-        <!-- Navigation -->
-        <nav class="navbar" role="navigation" aria-label="Hauptnavigation">
-            <div class="nav-container">
-                <div class="logo" aria-label="Logo">www.lucas-nagelsmann.de</div>
-                
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" aria-label="Menü öffnen" aria-expanded="false">
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                    <span class="hamburger"></span>
-                </button>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Hauptnavigation">
+        <div class="nav-container">
+            <div class="logo">www.lucas-nagelsmann.de</div>
 
-                <!-- Navigation Links -->
-                <ul class="nav-links" role="list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About me</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#portfolio">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><button class="theme-toggle" aria-label="Theme wechseln">🌙</button></li>
-                </ul>
+            <button class="mobile-menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links" role="list">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><button class="theme-toggle" type="button" aria-label="Theme wechseln">🌙</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section id="home" class="hero">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="hero-content">
+                <h1>Lucas Nagelsmann</h1>
+                <p>Software Engineer&ensp;|&ensp;IT Consultant&ensp;|&ensp;B.A. Computer science</p>
+                <a href="#portfolio" class="cta-button">My projects</a>
             </div>
-        </nav>
+        </section>
 
-        <!-- Main Content -->
-        <main>
-            <!-- Hero Section -->
-            <section id="home" class="hero">
-                <div class="hero-bg" aria-hidden="true"></div>
-                <div class="hero-content">
-                    <h1>Lucas Nagelsmann</h1>
-                    <p>Software Engineer&ensp;|&ensp;IT Consultant&ensp;|&ensp;B.A. Computer science</p>
-                    <a href="#portfolio" class="cta-button">My projects</a>
+        <!-- About -->
+        <section id="about" class="section">
+            <h2 class="section-title scroll-fade">About me</h2>
+            <div class="about-content">
+                <div class="about-text scroll-slide-left">
+                    <p>Hello! I’m a passionate .NET developer with over three years of professional experience building modern web and desktop applications using C#, ASP.NET Core, Blazor, and WPF. I rely on tools such as Entity Framework Core, SignalR, and Azure DevOps to create efficient, maintainable and scalable solutions.</p>
+                    <p>I value clean architectures, testable code, and elegant approaches to solving complex challenges — always with a strong focus on performance, usability, and long-term scalability.
+                        Beyond that, I continually explore new technologies within the .NET ecosystem, refine my development practices, and enjoy turning ideas into robust and user-friendly software products. My goal is to build applications that not only work well today but remain adaptable for the future.</p>
                 </div>
-            </section>
-
-            <!-- About Section -->
-            <section id="about" class="section">
-                <h2 class="section-title scroll-fade">About me</h2>
-                <div class="about-content">
-                    <div class="about-text scroll-slide-left">
-                        <p>Hello! I’m a passionate .NET developer with over three years of professional experience building modern web and desktop applications using C#, ASP.NET Core, Blazor, and WPF. I rely on tools such as Entity Framework Core, SignalR, and Azure DevOps to create efficient, maintainable and scalable solutions.</p>
-                        <p>I value clean architectures, testable code, and elegant approaches to solving complex challenges — always with a strong focus on performance, usability, and long-term scalability.
-Beyond that, I continually explore new technologies within the .NET ecosystem, refine my development practices, and enjoy turning ideas into robust and user-friendly software products. My goal is to build applications that not only work well today but remain adaptable for the future.</p>
-                    </div>
-                    <div class="about-image scroll-slide-right">
-                        <div class="portrait-wrap">
-                            <img src="resources/img/hero-bg.png" 
-                                 alt="Profilbild von Lucas Nagelsmann" 
-                                 class="portrait" 
-                                 id="portrait"
-                                 loading="lazy">
-                        </div>
+                <div class="scroll-slide-right">
+                    <div class="portrait-wrap">
+                        <img src="resources/img/hero-bg.png"
+                             alt="Profilbild von Lucas Nagelsmann"
+                             class="portrait"
+                             width="400"
+                             height="400"
+                             loading="lazy"
+                             decoding="async">
                     </div>
                 </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills" class="section">
-                <h2 class="section-title scroll-fade">Skills</h2>
-                <div class="skills-grid">
-                    <article class="skill-card scroll-fade">
-                        <h3>.NET Web Development</h3>
-                            <p>
-                                Building modern web applications with ASP.NET Core, Blazor, and MVC. 
-                                Strong expertise in C#, Razor Pages, and Entity Framework Core.
-                            </p>
-                    </article>
-
-                    <article class="skill-card scroll-fade">
-                        <h3>Full-Stack Architecture</h3>
-                            <p>
-                                Seamless integration of backend and frontend using REST APIs, SignalR, and gRPC. 
-                                Experienced in applying Clean Architecture principles and Domain-Driven Design.
-                            </p>
-                    </article>
-
-                    <article class="skill-card scroll-fade">
-                        <h3>UI/UX with Blazor</h3>
-                        <p>
-                            Component-based UI development using Blazor. 
-                            Creation of reusable UI elements and responsive layouts with Bootstrap and CSS Grid.
-                        </p>
-                    </article>
-
-    <article class="skill-card scroll-fade">
-        <h3>Performance & Scalability</h3>
-        <p>
-            Optimization of .NET applications through caching, asynchronous programming, 
-            and efficient database access. Utilizing middleware, logging, and monitoring solutions.
-        </p>
-    </article>
-
-    <article class="skill-card scroll-fade">
-        <h3>Git & GitHub</h3>
-        <p>
-            Version control with Git, collaborative workflows with GitHub, 
-            code reviews via pull requests, and branching strategies such as Git Flow.
-        </p>
-    </article>
-
-    <article class="skill-card scroll-fade">
-        <h3>Software Testing</h3>
-        <p>
-            Unit testing with xUnit and MSTest, mocking with NSubstitute, 
-            code coverage analysis, and TDD practices. 
-            End-to-end testing using Playwright or Selenium.
-        </p>
-    </article>
-
-    <article class="skill-card scroll-fade">
-        <h3>Database Development</h3>
-        <p>
-            Experience with SQL Server, PostgreSQL, and MySQL. 
-            Data access using Entity Framework Core, LINQ, and structured migration strategies.
-        </p>
-    </article>
-
-    <article class="skill-card scroll-fade">
-        <h3>Agile Tools & Workflows</h3>
-        <p>
-            Agile development with Scrum and Kanban, task management using Azure Boards and Jira, 
-            and documentation using Markdown and wiki systems.
-        </p>
-    </article>
-
-    <article class="skill-card scroll-fade">
-        <h3>Visual Studio, Rider & Extensions</h3>
-        <p>
-            Efficient development using Visual Studio, Rider, and ReSharper, 
-            along with powerful debugging, profiling, and monitoring tools.
-        </p>
-    </article>
-</div>
-
-            </section>
-
-            <!-- Portfolio Section -->
-            <section id="portfolio" class="section">
-                <h2 class="section-title scroll-fade">Projects</h2>
-                <div class="portfolio-grid">
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">Social Network</div>
-                        <div class="project-content">
-                            <h3>LN Social</h3>
-                            <p class="simple-desc">A modern social network like application based on Blazor WebAssembly with Supabase as Backend. Important features are authentication and real time data passing.</p>
-                            <a href="#" 
-                               class="project-link" 
-                               target="_blank" 
-                               rel="noopener noreferrer">
-                               View project →
-                            </a>
-                        </div>
-                    </article>
-
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">MonExA</div>
-                        <div class="project-content">
-                            <h3>Money Expenses Anlaysis</h3>
-                            <p class="simple-desc">A modern Blazor application to track and analyze expenses. Some interesting features are multi accounts and projects, database integration with supabase.</p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">FootballTracker</div>
-                        <div class="project-content">
-                            <h3>Football Tracker</h3>
-                            <p class="simple-desc">A modern tracker and data visualizer for football data and real time form checks. Multi comparison and analysis with various apis. Multi leagues work in progress.</p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">Dart Counter</div>
-                        <div class="project-content">
-                            <h3>Dart Application</h3>
-                            <p class="simple-desc">A modern dart counter with different gamemodes and difficulties. Analyze your Training and track your Progress. Game on!</p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">Hearts</div>
-                        <div class="project-content">
-                            <h3>Hearts Game App</h3>
-                            <p class="simple-desc">A simple web application for hearts. Play against cpu players in four different difficulties, analyze your own game and track your points. </p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card scroll-fade">
-                        <div class="project-image" aria-hidden="true">Syncro</div>
-                        <div class="project-content">
-                            <h3>Project Management App</h3>
-                            <p class="simple-desc">A simple web application for managing your whole project with just one tool. Work with mates, schedule tasks, track your progress! </p>
-                            <a href="#" class="project-link" target="_blank">View project →</a>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact" class="section">
-                <h2 class="section-title scroll-fade">Contact</h2>
-                <div class="contact-content">
-                    <p class="scroll-fade">Planning a new project? Let’s talk about how we can make it happen.</p>
-                    <form class="contact-form scroll-fade" novalidate>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" 
-                                   id="name" 
-                                   name="name" 
-                                   required 
-                                   autocomplete="name"
-                                   placeholder="Your name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-Mail</label>
-                            <input type="email" 
-                                   id="email" 
-                                   name="email" 
-                                   required 
-                                   autocomplete="email"
-                                   placeholder="your.email@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" 
-                                      name="message" 
-                                      rows="5" 
-                                      required
-                                      placeholder="Your message to me ..."></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send message</button>
-                    </form>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="social-links">
-                <a href="#" 
-                   class="social-link" 
-                   aria-label="Facebook"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-facebook.svg" alt="F">
-                </a>
-                <a href="#" 
-                   class="social-link" 
-                   aria-label="Instagram"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-instagram.svg" alt="I">
-                </a>
-                <a href="#" 
-                   class="social-link" 
-                   aria-label="LinkedIn"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-linkedin.svg" alt="L">
-                </a>
-                <a href="#" 
-                   class="social-link" 
-                   aria-label="X (Twitter)"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-x.svg" alt="X">
-                </a>
-                <a href="https://github.com/LucasN177" 
-                   class="social-link" 
-                   aria-label="GitHub"
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <img src="resources/icons/icons8-github.svg" alt="G">
-                </a>
             </div>
-            <p>&copy; 2026 Lucas Nagelsmann. All rights reserved.</p>
-        </footer>
-    </div>
+        </section>
 
-    <script src="script.js"></script>
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <h2 class="section-title scroll-fade">Skills</h2>
+            <div class="skills-grid">
+                <article class="skill-card scroll-fade">
+                    <h3>.NET Web Development</h3>
+                    <p>
+                        Building modern web applications with ASP.NET Core, Blazor, and MVC.
+                        Strong expertise in C#, Razor Pages, and Entity Framework Core.
+                    </p>
+                </article>
+
+                <article class="skill-card scroll-fade">
+                    <h3>Full-Stack Architecture</h3>
+                    <p>
+                        Seamless integration of backend and frontend using REST APIs, SignalR, and gRPC.
+                        Experienced in applying Clean Architecture principles and Domain-Driven Design.
+                    </p>
+                </article>
+
+                <article class="skill-card scroll-fade">
+                    <h3>UI/UX with Blazor</h3>
+                    <p>
+                        Component-based UI development using Blazor.
+                        Creation of reusable UI elements and responsive layouts with Bootstrap and CSS Grid.
+                    </p>
+                </article>
+
+                <article class="skill-card scroll-fade">
+                    <h3>Performance &amp; Scalability</h3>
+                    <p>
+                        Optimization of .NET applications through caching, asynchronous programming,
+                        and efficient database access. Utilizing middleware, logging, and monitoring solutions.
+                    </p>
+                </article>
+
+                <article class="skill-card scroll-fade">
+                    <h3>Git &amp; GitHub</h3>
+                    <p>
+                        Version control with Git, collaborative workflows with GitHub,
+                        code reviews via pull requests, and branching strategies such as Git Flow.
+                    </p>
+                </article>
+
+                <article class="skill-card scroll-fade">
+                    <h3>Software Testing</h3>
+                    <p>
+                        Unit testing with xUnit and MSTest, mocking with NSubstitute,
+                        code coverage analysis, and TDD practices.
+                        End-to-end testing using Playwright or Selenium.
+                    </p>
+                </article>
+
+                <article class="skill-card scroll-fade">
+                    <h3>Database Development</h3>
+                    <p>
+                        Experience with SQL Server, PostgreSQL, and MySQL.
+                        Data access using Entity Framework Core, LINQ, and structured migration strategies.
+                    </p>
+                </article>
+
+                <article class="skill-card scroll-fade">
+                    <h3>Agile Tools &amp; Workflows</h3>
+                    <p>
+                        Agile development with Scrum and Kanban, task management using Azure Boards and Jira,
+                        and documentation using Markdown and wiki systems.
+                    </p>
+                </article>
+
+                <article class="skill-card scroll-fade">
+                    <h3>Visual Studio, Rider &amp; Extensions</h3>
+                    <p>
+                        Efficient development using Visual Studio, Rider, and ReSharper,
+                        along with powerful debugging, profiling, and monitoring tools.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="portfolio" class="section">
+            <h2 class="section-title scroll-fade">Projects</h2>
+            <div class="portfolio-grid">
+                <article class="project-card scroll-fade">
+                    <div class="project-image" aria-hidden="true">Social Network</div>
+                    <div class="project-content">
+                        <h3>LN Social</h3>
+                        <p class="simple-desc">A modern social network like application based on Blazor WebAssembly with Supabase as Backend. Important features are authentication and real time data passing.</p>
+                        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View project →</a>
+                    </div>
+                </article>
+
+                <article class="project-card scroll-fade">
+                    <div class="project-image" aria-hidden="true">MonExA</div>
+                    <div class="project-content">
+                        <h3>Money Expenses Anlaysis</h3>
+                        <p class="simple-desc">A modern Blazor application to track and analyze expenses. Some interesting features are multi accounts and projects, database integration with supabase.</p>
+                        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View project →</a>
+                    </div>
+                </article>
+
+                <article class="project-card scroll-fade">
+                    <div class="project-image" aria-hidden="true">FootballTracker</div>
+                    <div class="project-content">
+                        <h3>Football Tracker</h3>
+                        <p class="simple-desc">A modern tracker and data visualizer for football data and real time form checks. Multi comparison and analysis with various apis. Multi leagues work in progress.</p>
+                        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View project →</a>
+                    </div>
+                </article>
+
+                <article class="project-card scroll-fade">
+                    <div class="project-image" aria-hidden="true">Dart Counter</div>
+                    <div class="project-content">
+                        <h3>Dart Application</h3>
+                        <p class="simple-desc">A modern dart counter with different gamemodes and difficulties. Analyze your Training and track your Progress. Game on!</p>
+                        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View project →</a>
+                    </div>
+                </article>
+
+                <article class="project-card scroll-fade">
+                    <div class="project-image" aria-hidden="true">Hearts</div>
+                    <div class="project-content">
+                        <h3>Hearts Game App</h3>
+                        <p class="simple-desc">A simple web application for hearts. Play against cpu players in four different difficulties, analyze your own game and track your points.</p>
+                        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View project →</a>
+                    </div>
+                </article>
+
+                <article class="project-card scroll-fade">
+                    <div class="project-image" aria-hidden="true">Syncro</div>
+                    <div class="project-content">
+                        <h3>Project Management App</h3>
+                        <p class="simple-desc">A simple web application for managing your whole project with just one tool. Work with mates, schedule tasks, track your progress!</p>
+                        <a href="#" class="project-link" target="_blank" rel="noopener noreferrer">View project →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <h2 class="section-title scroll-fade">Contact</h2>
+            <div class="contact-content">
+                <p class="scroll-fade">Planning a new project? Let’s talk about how we can make it happen.</p>
+                <form class="contact-form scroll-fade" novalidate>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="your.email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Your message to me ..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <img src="resources/icons/icons8-facebook.svg" alt="" width="45" height="45">
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <img src="resources/icons/icons8-instagram.svg" alt="" width="45" height="45">
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <img src="resources/icons/icons8-linkedin.svg" alt="" width="45" height="45">
+            </a>
+            <a href="#" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                <img src="resources/icons/icons8-x.svg" alt="" width="45" height="45">
+            </a>
+            <a href="https://github.com/LucasN177" class="social-link" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                <img src="resources/icons/icons8-github.svg" alt="" width="45" height="45">
+            </a>
+        </div>
+        <p>&copy; 2026 Lucas Nagelsmann. All rights reserved.</p>
+    </footer>
 </body>
 </html>

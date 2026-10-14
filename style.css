@@ -1,7 +1,9 @@
 /* ===================================
    RESET & BASE STYLES
    =================================== */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -23,9 +25,20 @@
     --glass-bg: rgba(255, 255, 255, 0.1);
     --shadow: rgba(0, 0, 0, 0.1);
     --border-color: rgba(0, 0, 0, 0.05);
+
+    --gradient-primary: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    --gradient-full: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-pink));
+    --gradient-success: linear-gradient(135deg, #34c759, #30d158);
+    --glow-blue: rgba(0, 122, 255, 0.3);
+
+    --nav-height: 70px;
+    --content-width: 1200px;
+    --radius-card: 20px;
+    --radius-pill: 30px;
+    --transition-fast: 0.3s ease;
 }
 
-[data-theme="dark"] {
+:root[data-theme="dark"] {
     --primary-text: #f5f5f7;
     --secondary-text: #a1a1a6;
     --bg-primary: #000000;
@@ -39,13 +52,31 @@
 /* ===================================
    BODY & TYPOGRAPHY
    =================================== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: var(--bg-primary);
     color: var(--primary-text);
     line-height: 1.6;
     overflow-x: hidden;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Gradient text (shared) */
+.logo,
+.hero h1,
+.section-title {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* ===================================
@@ -57,14 +88,19 @@ body {
     width: 100%;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    background: var(--glass-bg);
+    background-color: var(--glass-bg);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.navbar.scrolled {
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 20px var(--shadow);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: var(--content-width);
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -75,10 +111,7 @@ body {
 .logo {
     font-size: 1.5rem;
     font-weight: 600;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-image: var(--gradient-primary);
     user-select: none;
 }
 
@@ -94,9 +127,9 @@ body {
     color: var(--primary-text);
     font-weight: 500;
     font-size: 0.95rem;
-    transition: all 0.3s ease;
     opacity: 0.8;
     position: relative;
+    transition: opacity var(--transition-fast);
 }
 
 .nav-links a::after {
@@ -106,8 +139,8 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    transition: width 0.3s ease;
+    background: var(--gradient-primary);
+    transition: width var(--transition-fast);
 }
 
 .nav-links a:hover {
@@ -123,11 +156,11 @@ body {
     border: 2px solid var(--border-color);
     color: var(--primary-text);
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: var(--radius-card);
     cursor: pointer;
-    transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     font-size: 0.8rem;
+    transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .theme-toggle:hover {
@@ -151,7 +184,7 @@ body {
     height: 3px;
     background: var(--primary-text);
     border-radius: 3px;
-    transition: all 0.3s ease;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
 .mobile-menu-toggle.active .hamburger:nth-child(1) {
@@ -181,13 +214,10 @@ body {
 
 .hero-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, 
-        rgba(0, 122, 255, 0.1) 0%, 
-        rgba(175, 82, 222, 0.1) 50%, 
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(0, 122, 255, 0.1) 0%,
+        rgba(175, 82, 222, 0.1) 50%,
         rgba(255, 45, 146, 0.1) 100%);
     opacity: 0.8;
     animation: gradientShift 8s ease-in-out infinite;
@@ -209,10 +239,7 @@ body {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-image: var(--gradient-full);
     animation: fadeInUp 1s ease-out;
 }
 
@@ -226,14 +253,14 @@ body {
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    background: var(--gradient-primary);
     color: white;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: var(--radius-pill);
     font-weight: 500;
-    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px var(--glow-blue);
     animation: fadeInUp 1s ease-out 0.4s backwards;
-    box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .cta-button:hover {
@@ -257,7 +284,7 @@ body {
    =================================== */
 .section {
     padding: 6rem 2rem;
-    max-width: 1200px;
+    max-width: var(--content-width);
     margin: 0 auto;
     text-align: justify;
 }
@@ -267,10 +294,7 @@ body {
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-image: var(--gradient-primary);
 }
 
 /* ===================================
@@ -301,20 +325,21 @@ body {
 .portrait {
     width: 100%;
     max-width: 400px;
+    height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 20px 60px var(--shadow);
-    transition: all 0.3s ease;
     transform-origin: center center;
     border: 5px solid var(--card-bg);
+    transition: transform var(--transition-fast);
 }
 
 .portrait:hover {
     transform: scale(1.05);
 }
 
-/* Swing Animation für Portrait */
+/* Swing animation for the portrait (triggered once when visible) */
 @keyframes swing {
     0%   { transform: rotateZ(0deg); }
     20%  { transform: rotateZ(15deg); }
@@ -325,29 +350,44 @@ body {
 }
 
 .portrait.visible {
-    animation: swing 1.5s ease-out forwards;
+    animation: swing 1.5s ease-out;
+}
+
+/* ===================================
+   CARDS (shared by skills & projects)
+   =================================== */
+.skills-grid,
+.portfolio-grid {
+    display: grid;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.skill-card,
+.project-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-card);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 /* ===================================
    SKILLS SECTION
    =================================== */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
 .skill-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
     padding: 2rem;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
 }
 
 .skill-card::before {
@@ -361,14 +401,8 @@ body {
 }
 
 .skill-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.02);
     box-shadow: 0 20px 40px var(--shadow);
-}
-
-.skill-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    display: block;
 }
 
 .skill-card h3 {
@@ -386,24 +420,6 @@ body {
 /* ===================================
    PORTFOLIO SECTION
    =================================== */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.project-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    position: relative;
-}
-
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 25px 50px var(--shadow);
@@ -412,7 +428,7 @@ body {
 .project-image {
     width: 100%;
     height: 200px;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple), var(--accent-pink));
+    background: var(--gradient-full);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -423,6 +439,7 @@ body {
     overflow: hidden;
 }
 
+/* Shine effect on hover */
 .project-image::after {
     content: '';
     position: absolute;
@@ -431,7 +448,7 @@ body {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: all 0.6s ease;
+    transition: left 0.6s ease;
 }
 
 .project-card:hover .project-image::after {
@@ -454,14 +471,18 @@ body {
     line-height: 1.6;
 }
 
+.simple-desc {
+    hyphens: auto;
+}
+
 .project-link {
     color: var(--accent-blue);
     text-decoration: none;
     font-weight: 500;
-    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 .project-link:hover {
@@ -511,9 +532,9 @@ body {
     color: var(--primary-text);
     font-size: 1rem;
     font-family: inherit;
-    transition: all 0.3s ease;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
 }
 
 .form-group input::placeholder,
@@ -530,6 +551,15 @@ body {
     box-shadow: 0 5px 20px rgba(0, 122, 255, 0.2);
 }
 
+/* Validation states (set by script.js) */
+.form-group .is-filled {
+    border-color: var(--accent-blue);
+}
+
+.form-group .is-invalid {
+    border-color: var(--accent-pink);
+}
+
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
@@ -537,20 +567,20 @@ body {
 
 .submit-btn {
     padding: 1rem 2rem;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    background: var(--gradient-primary);
     color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: var(--radius-pill);
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
     margin-top: 1rem;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .submit-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 15px 30px var(--glow-blue);
 }
 
 .submit-btn:active {
@@ -560,6 +590,10 @@ body {
 .submit-btn:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+.submit-btn.is-success {
+    background: var(--gradient-success);
 }
 
 /* ===================================
@@ -588,19 +622,19 @@ body {
 .social-link {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    background: var(--gradient-primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .social-link:hover {
     transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 10px 25px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 10px 25px var(--glow-blue);
 }
 
 .social-link img {
@@ -611,38 +645,29 @@ body {
 
 /* ===================================
    SCROLL ANIMATIONS
+   Hidden state only applies until `.visible` is added by script.js.
+   :where() keeps specificity low so component :hover transforms still win.
    =================================== */
-.scroll-fade {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
-}
-
-.scroll-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.scroll-slide-left {
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: all 0.8s ease;
-}
-
-.scroll-slide-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
+.scroll-fade,
+.scroll-slide-left,
 .scroll-slide-right {
-    opacity: 0;
-    transform: translateX(100px);
-    transition: all 0.8s ease;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.scroll-slide-right.visible {
-    opacity: 1;
-    transform: translateX(0);
+:where(.scroll-fade, .scroll-slide-left, .scroll-slide-right):not(.visible) {
+    opacity: 0;
+}
+
+:where(.scroll-fade):not(.visible) {
+    transform: translateY(50px);
+}
+
+:where(.scroll-slide-left):not(.visible) {
+    transform: translateX(-100px);
+}
+
+:where(.scroll-slide-right):not(.visible) {
+    transform: translateX(100px);
 }
 
 /* ===================================
@@ -666,10 +691,10 @@ body {
 
     .nav-links {
         position: fixed;
-        top: 70px;
+        top: var(--nav-height);
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - var(--nav-height));
         background: var(--card-bg);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
@@ -677,12 +702,16 @@ body {
         justify-content: flex-start;
         padding: 2rem;
         gap: 1.5rem;
-        transition: left 0.3s ease;
         box-shadow: 0 10px 30px var(--shadow);
+        /* Hide from keyboard/screen readers while closed */
+        visibility: hidden;
+        transition: left var(--transition-fast), visibility 0s linear 0.3s;
     }
 
     .nav-links.active {
         left: 0;
+        visibility: visible;
+        transition: left var(--transition-fast);
     }
 
     .nav-links a {
@@ -777,6 +806,10 @@ body {
    ACCESSIBILITY
    =================================== */
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     *,
     *::before,
     *::after {
@@ -786,21 +819,17 @@ body {
     }
 }
 
-/* Focus Styles */
-a:focus,
-button:focus,
-input:focus,
-textarea:focus {
+/* Focus styles (keyboard only) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
     outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
 }
 
-.simple-desc{
-    hyphens: auto;
-}
-
-/* High Contrast Mode Support */
-@media (prefers-contrast: high) {
+/* High contrast mode support */
+@media (prefers-contrast: more) {
     .nav-links a,
     .project-link {
         text-decoration: underline;
