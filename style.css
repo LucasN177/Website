@@ -823,6 +823,7 @@ a.icon-btn:hover {
     width: 100%;
     max-width: 320px;
     margin-inline: auto;
+    margin-bottom: 1.75rem; /* room for the badge hanging below the portrait */
 }
 
 @media (min-width: 640px) {
@@ -875,8 +876,11 @@ a.icon-btn:hover {
 }
 
 .badge-card {
-    top: 1rem;
-    right: -0.5rem;
+    /* Sits on the jacket below the face, hanging off the bottom edge */
+    bottom: -1.5rem;
+    left: 50%;
+    translate: -50% 0;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     gap: 0.7rem;
@@ -949,12 +953,6 @@ a.icon-btn:hover {
 .tok-t { color: var(--tok-type); }
 .tok-b { color: var(--tok-bool); }
 
-@media (min-width: 520px) {
-    .code-card {
-        display: block;
-    }
-}
-
 @media (max-width: 479px) {
     .hero-actions .btn {
         flex: 1 1 100%;
@@ -977,6 +975,7 @@ a.icon-btn:hover {
     .hero-visual {
         max-width: 440px;
         margin-right: 1.5rem;
+        margin-bottom: 3rem;
     }
 
     .hero-stats {
@@ -985,13 +984,17 @@ a.icon-btn:hover {
         gap: 2.75rem;
     }
 
+    /* Both cards stay below the chin line, on the shoulders */
     .badge-card {
-        top: 2.25rem;
-        right: -2.25rem;
+        bottom: 5.5rem;
+        left: auto;
+        right: -2.75rem;
+        translate: none;
     }
 
     .code-card {
-        bottom: 2.5rem;
+        display: block;
+        bottom: -3rem;
         left: -3.5rem;
     }
 }
